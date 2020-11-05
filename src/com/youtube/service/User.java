@@ -5,18 +5,36 @@ import com.youtube.progenitor.Person;
 public class User extends Person {
     private boolean logged;
     private int watchedVideos;
+    private int experience;
+    private String libraryWatchedVideos[];
+    private String email;
+    private String password;
 
-    public void watchVideos() {
-
+    public void watchVideo(Video video) {
+        if (this.isLogged()) {
+            this.watchedVideos++;
+            this.gainExpr();
+            libraryWatchedVideos[watchedVideos] = video.getTitle();
+        }
     }
 
-    public void login() {
+    public void login(String email, String password) {
+        this.email = email
+        this.password = password
+        this.setLogged(true);
+    }
 
+    public String[] getLibraryWatchedVideos(String email, String password) {
+        if (email.equals(this.getEmail()) && password.equals(this.getPassword())) {
+            return libraryWatchedVideos;
+        } else {
+            System.out.println("Invalid credentials");
+        }
     }
 
     @Override
     public void gainExpr() {
-        super.gainExpr();
+        this.experience += 100;
     }
 
     public boolean isLogged() {
@@ -31,5 +49,37 @@ public class User extends Person {
     }
     private void setWatchedVideos(int watchedVideos) {
         this.watchedVideos = watchedVideos;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    private void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword(String email) {
+        if (this.getEmail().equals(email)) {
+            return password;
+        } else {
+            System.out.println("Invalid credentials");
+        }
+    }
+
+    public void setPassword(String email, String password) {
+        if (this.getEmail().equals(email)) {
+            this.password = password;
+        } else {
+            System.out.println("Invalid credentials");
+        }
     }
 }
