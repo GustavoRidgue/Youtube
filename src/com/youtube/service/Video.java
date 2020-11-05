@@ -3,31 +3,39 @@ package com.youtube.service;
 import com.youtube.controller.VideoActions;
 
 public class Video implements VideoActions {
-    private String title;
-    private float evaluation;
-    private int views;
-    private int likes;
-    private boolean reproducing;
+    protected String title;
+    protected float evaluation;
+    protected int views;
+    protected int likes;
+    protected int dislikes;
+    protected boolean reproducing;
 
+    public Video(String title) {
+        this.title = title;
+    }
 
     @Override
     public void play() {
-
+        this.setReproducing(true);
     }
 
     @Override
     public void pause() {
-
+        this.setReproducing(false);
     }
 
     @Override
-    public void like() {
-
+    public void like(User user) {
+        if (user.isLogged()) {
+            this.likes++;
+        }
     }
 
     @Override
-    public void dislike() {
-
+    public void dislike(User user) {
+        if (user.isLogged()) {
+            this.dislikes++;
+        }
     }
 
     public String getTitle() {

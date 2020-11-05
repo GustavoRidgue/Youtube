@@ -12,6 +12,7 @@ public class User extends Person {
 
     public void watchVideo(Video video) {
         if (this.isLogged()) {
+            video.views++;
             this.watchedVideos++;
             this.gainExpr();
             libraryWatchedVideos[watchedVideos] = video.getTitle();
