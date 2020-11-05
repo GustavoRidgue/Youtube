@@ -23,7 +23,7 @@ public class Video implements VideoActions {
     public void pause() {
         this.setReproducing(false);
     }
-
+    
     @Override
     public void like(User user) {
         if (user.isLogged()) {
