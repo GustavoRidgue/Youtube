@@ -6,7 +6,7 @@ public abstract class Person {
     protected char sex;
     protected float experience;
 
-    public void gainExpr() {
+    protected void gainExpr() {
 
     }
 }

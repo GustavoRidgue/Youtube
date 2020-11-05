@@ -2,11 +2,14 @@ package com.youtube.service;
 
 import com.youtube.progenitor.Person;
 
+import java.util.Arrays;
+
 public class User extends Person {
     private boolean logged;
     private int watchedVideos;
     private int experience;
     private String libraryWatchedVideos[];
+    private String returnList[];
     private String email;
     private String password;
 
@@ -15,26 +18,27 @@ public class User extends Person {
             video.views++;
             this.watchedVideos++;
             this.gainExpr();
-            libraryWatchedVideos[watchedVideos] = video.getTitle();
+            //libraryWatchedVideos[watchedVideos] = video.getTitle();
         }
     }
 
     public void login(String email, String password) {
-        this.email = email
-        this.password = password
+        this.email = email;
+        this.password = password;
         this.setLogged(true);
     }
 
     public String[] getLibraryWatchedVideos(String email, String password) {
-        if (email.equals(this.getEmail()) && password.equals(this.getPassword())) {
+        if (email.equals(this.getEmail()) && password.equals(this.getPassword(email))) {
             return libraryWatchedVideos;
         } else {
             System.out.println("Invalid credentials");
+            return returnList;
         }
     }
 
     @Override
-    public void gainExpr() {
+    protected void gainExpr() {
         this.experience += 100;
     }
 
@@ -73,6 +77,7 @@ public class User extends Person {
             return password;
         } else {
             System.out.println("Invalid credentials");
+            return "";
         }
     }
 
@@ -82,5 +87,18 @@ public class User extends Person {
         } else {
             System.out.println("Invalid credentials");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "logged=" + logged +
+                ", watchedVideos=" + watchedVideos +
+                ", experience=" + experience +
+                ", libraryWatchedVideos=" + Arrays.toString(libraryWatchedVideos) +
+                ", returnList=" + Arrays.toString(returnList) +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

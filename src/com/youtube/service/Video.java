@@ -23,7 +23,7 @@ public class Video implements VideoActions {
     public void pause() {
         this.setReproducing(false);
     }
-    
+
     @Override
     public void like(User user) {
         if (user.isLogged()) {
@@ -76,5 +76,17 @@ public class Video implements VideoActions {
 
     public void setReproducing(boolean reproducing) {
         this.reproducing = reproducing;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "title='" + title + '\'' +
+                ", evaluation=" + evaluation +
+                ", views=" + views +
+                ", likes=" + likes +
+                ", dislikes=" + dislikes +
+                ", reproducing=" + reproducing +
+                '}';
     }
 }
