@@ -10,13 +10,16 @@ public class Main {
 
         System.out.println(user1.isLogged());
 
-        user1.login("guferrari007@gmail.com", "ferrari0071");
+        user1.login("guferrari007@gmail.com", "ridgue");
 
         System.out.println(user1.getEmail());
-        System.out.println(user1.getPassword("guferrari007@gmail.com"));
+        System.out.println(user1.getPassword("gustavo_ridgue@gmail.com"));
 
         System.out.println(video1.toString());
         System.out.println(user1.toString());
+
+        //String libraryWatchedVideos[] = new String[8];
+        //libraryWatchedVideos[0] = new String("fwrf");
 
         user1.watchVideo(video1);
 

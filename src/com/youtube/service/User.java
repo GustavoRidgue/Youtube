@@ -8,17 +8,17 @@ public class User extends Person {
     private boolean logged;
     private int watchedVideos;
     private int experience;
-    private String libraryWatchedVideos[];
+    private String libraryWatchedVideos[] = new String[10];
     private String returnList[];
     private String email;
     private String password;
 
     public void watchVideo(Video video) {
         if (this.isLogged()) {
+            libraryWatchedVideos[watchedVideos] = new String(video.getTitle());
             video.views++;
             this.watchedVideos++;
             this.gainExpr();
-            //libraryWatchedVideos[watchedVideos] = video.getTitle();
         }
     }
 
